@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class VideoService {
 
-  public api = 'http://192.168.0.102:3000';
+  public api = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 

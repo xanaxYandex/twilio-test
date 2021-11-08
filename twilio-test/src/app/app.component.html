@@ -1,5 +1,37 @@
-<input type="text" placeholder="room" [(ngModel)]="roomName">
-<input type="text" placeholder="name" [(ngModel)]="name">
-<button (click)="promiseWrapper()">Connect</button>
-<div class="video" #video></div>
+<div class="header z-depth-2">
+    <h3>Twilio Test App</h3>
+    <input type="text" placeholder="Room" [(ngModel)]="roomName">
+    <input type="text" placeholder="Name" [(ngModel)]="name">
+    <a class="waves-effect waves-light btn" (click)="promiseWrapper()">Connect</a>
+</div>
+
+<div class="body">
+    <div class="body__video">
+        <div class="video" #video></div>
+    </div>
+    <div class="body__participant-list">
+        <div class="body__participant-list__local">
+            <div class="named-divider">
+                <h6>Local Participants</h6>
+                <div class="line"></div>
+            </div>
+            <div class="body__participant-list__item" *ngIf="room?.localParticipant">
+                <span>{{room?.localParticipant?.identity}}</span>
+                <a class="waves-effect waves-light btn" (click)="muteLocalParticipantsAudio()">Sound</a>
+                <a class="waves-effect waves-light btn" (click)="muteLocalParticipantsVideo()">Video</a>
+            </div>
+        </div>
+        <div class="named-divider body__participant-list__local" style="top: 60px">
+            <h6>Remote Participants</h6>
+            <div class="line"></div>
+        </div>
+        <div class="body__participant-list__remote">
+            <div class="body__participant-list__item" *ngFor="let part of participants; let i = index">
+                <span>{{part.identity}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
